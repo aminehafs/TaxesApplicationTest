@@ -1,0 +1,41 @@
+{% extends 'FosMainBundle:Default:index.html.twig' %}
+
+{% block list_companies %}
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                {% for field in fields_names %}
+                    <th scope="col">{{ field }}</th>
+                {% endfor %}
+                <th>Impôt dus par l'entreprise</th>
+                <th></th>
+                <th>
+                    <a class="btn btn-outline-success"
+                       href="{{ path('add_company', {'type' : list_type}) }}">Ajouter</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key, value in request %}
+                <tr>
+                    {% for element in value %}
+                        <td>{{ element }}</td>
+                    {% endfor %}
+                    <td>
+                        {{ tax|default(null) }}
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-warning"
+                           href="{{ path('update_company', {'type': list_type, 'value' : value}) }}">Modifier</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-danger"
+                           href="{{ path('remove_company', {'type': list_type, 'id' : value.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

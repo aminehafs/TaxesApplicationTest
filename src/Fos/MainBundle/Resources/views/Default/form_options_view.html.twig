@@ -1,0 +1,10 @@
+{% extends 'FosMainBundle:Default:index.html.twig' %}
+
+{% block form_options_view %}
+    <h5>Veuillez selectionner un type d'entreprise:</h5>
+    <div class="form-options-view col-md-9">
+        {{ form_start(form, {'action': path('list_companies') }) }}
+            {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

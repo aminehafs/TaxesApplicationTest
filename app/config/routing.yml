@@ -1,0 +1,49 @@
+fos_main:
+    resource: "@FosMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+fos_home:
+    path: /
+    defaults: { _controller: FosMainBundle:Default:index }
+fos_logout:
+    path: /logout
+    defaults: { _controller: FosMainBundle:Default:logOut }
+list_companies:
+    path: /companies
+    defaults: { _controller: FosMainBundle:Default:getListCompanies }
+    requirements:
+        type: "[a-zA-Z]+"
+add_company:
+    path: /companies/add
+    defaults: { _controller: FosMainBundle:Default:addCompany }
+    requirements:
+        type: "[a-zA-Z]+"
+remove_company:
+    path: /companies/delete
+    defaults: { _controller: FosMainBundle:Default:deleteCompany }
+update_company:
+    path: /companies/update
+    defaults: { _controller: FosMainBundle:Default:updateCompany }
+
+
+
+# fos user routing
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
